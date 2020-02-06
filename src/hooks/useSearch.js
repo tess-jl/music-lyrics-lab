@@ -3,7 +3,7 @@ import getArtists from '../services/getArtists';
 
 const useSearch = () => {
   const [artist, setArtist] = useState({});
-  const [searchResults, setSearchResults] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   const setSearch = (value) => {
@@ -16,15 +16,11 @@ const useSearch = () => {
     event.preventDefault();
     getArtists(searchTerm)
       .then(res => {
-        res.artists.map(artist => {
-          setSearchResults(res);
-          return {
-            name: artist.name
-          };
-        });
+        setSearchResults(res.artists);
+        
       });   
   };
-  return { artist, search, setSearch, searchTerm };
+  return { artist, search, setSearch, searchTerm, searchResults };
 };
 
 export default useSearch;

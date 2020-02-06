@@ -5,8 +5,15 @@ import useSearch from '../hooks/useSearch';
 
 const SearchView = ({ value, handleChange }) => {
   
-  const { search, setSearch, searchTerm } = useSearch();
+  const { search, setSearch, searchTerm, searchResults } = useSearch();
   
+  const artists = searchResults.map(({ id, name }) => {
+    return (
+      <li key={id}>
+        {name}
+      </li>
+    );
+  });
 
   return (
     <>
@@ -16,7 +23,7 @@ const SearchView = ({ value, handleChange }) => {
       </form>  
     
       <ul>
-        {/* {artists} */}
+        {artists}
       </ul>
     </>
   );
