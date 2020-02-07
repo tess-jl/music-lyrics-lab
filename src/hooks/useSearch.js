@@ -12,7 +12,6 @@ const useSearch = () => {
 
 
   const search = (searchTerm) => {
-    console.log(searchTerm);
     event.preventDefault();
     getArtists(searchTerm)
       .then(res => {
@@ -20,7 +19,13 @@ const useSearch = () => {
         
       });   
   };
-  return { artist, search, setSearch, searchTerm, searchResults };
+
+  const updateArtist = (artist) => {
+    console.log(artist)
+    setArtist(artist);
+  };
+
+  return { artist, search, setSearch, searchTerm, searchResults, updateArtist };
 };
 
 export default useSearch;

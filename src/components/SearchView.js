@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 const SearchView = ({ value, handleChange }) => {
   
-  const { search, setSearch, searchTerm, searchResults } = useSearch();
+  const { search, setSearch, searchTerm, searchResults, updateArtist } = useSearch();
   
   const artists = searchResults.map(({ id, name }) => {
     return (
       <>
         <li key={id}>
-          <Link to={`/artist/${id}`}>
+          <Link to={`/artist/${id}`} onClick={() => updateArtist({ name })}>
             <h3>{name}</h3>
           </Link>
         </li>

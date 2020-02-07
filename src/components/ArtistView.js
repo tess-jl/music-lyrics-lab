@@ -1,12 +1,13 @@
-import React from 'react'; 
+import React, { useState } from 'react'; 
 import PropTypes from 'prop-types';
 import useArtist from '../hooks/useArtist';
+import useSearch from '../hooks/useSearch';
 import { Link } from 'react-router-dom';
 
 const ArtistView = ({ handleArtistSelection }) => {
 
   const { releases } = useArtist();
-
+  const { artist } = useSearch();
   const mappedReleases = releases.map(({ id, title }) => {
     return (
       <>
