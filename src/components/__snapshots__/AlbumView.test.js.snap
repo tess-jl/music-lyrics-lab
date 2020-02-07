@@ -11,7 +11,7 @@ exports[`AlbumView component renders an Album View 1`] = `
       "entries": Array [
         Object {
           "hash": "",
-          "key": "u45c0g",
+          "key": "x8zusr",
           "pathname": "/",
           "search": "",
           "state": undefined,
@@ -25,7 +25,7 @@ exports[`AlbumView component renders an Album View 1`] = `
       "listen": [Function],
       "location": Object {
         "hash": "",
-        "key": "u45c0g",
+        "key": "x8zusr",
         "pathname": "/",
         "search": "",
         "state": undefined,
