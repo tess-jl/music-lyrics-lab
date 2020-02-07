@@ -10,9 +10,9 @@ export default function App() {
     <Router>
     
       <Route exact path='/' component={SearchView} />
-      <Route path='/artist/:id' component={ArtistView} />
-      <Route path='/album/:id' component={AlbumView} />
-      <Route path='/song/:id' component={SongView} />;
+      <Route path='/artist/:name/:id' component={ArtistView} />
+      <Route path='/album/:name/:id' component={AlbumView} />
+      <Route path='/song/:name/:title' component={SongView} />
     </Router>
   );
 }

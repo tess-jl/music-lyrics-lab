@@ -11,7 +11,7 @@ const SearchView = ({ value, handleChange }) => {
     return (
       <>
         <li key={id}>
-          <Link to={`/artist/${id}`} onClick={() => updateArtist({ name })}>
+          <Link to={`/artist/${name}/${id}`} >
             <h3>{name}</h3>
           </Link>
         </li>

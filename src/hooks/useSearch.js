@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import getArtists from '../services/getArtists';
 
 const useSearch = () => {
-  const [artist, setArtist] = useState({});
+  const [artist, setArtist] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -21,7 +21,6 @@ const useSearch = () => {
   };
 
   const updateArtist = (artist) => {
-    console.log(artist)
     setArtist(artist);
   };
 
