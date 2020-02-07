@@ -5,7 +5,7 @@ import SongView from './SongView';
 
 describe('SongView component', () => {
   it('renders an Song View', () => {
-    const wrapper = shallow(<MemoryRouter><SongView /></MemoryRouter>);
+    const wrapper = shallow(<MemoryRouter initialEntries={[{ pathname: '/', key: 'testKey' }]}><SongView /></MemoryRouter>);
     expect(wrapper).toMatchSnapshot();
   });
 });
