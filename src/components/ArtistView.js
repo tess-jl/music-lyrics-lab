@@ -1,9 +1,8 @@
-import React, { useState } from 'react'; 
-import PropTypes from 'prop-types';
+import React from 'react'; 
 import useArtist from '../hooks/useArtist';
 import { Link, useParams } from 'react-router-dom';
 
-const ArtistView = ({ handleArtistSelection }) => {
+const ArtistView = () => {
   const { name } = useParams();
   const { releases } = useArtist();
 

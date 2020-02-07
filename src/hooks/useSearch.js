@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import getArtists from '../services/getArtists';
 
 const useSearch = () => {
-  const [artist, setArtist] = useState('');
+  const [offset, setOffset] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -10,21 +10,34 @@ const useSearch = () => {
     setSearchTerm(value);
   };
 
+  const fetchArtists = () => {
+    getArtists(searchTerm, offset)
+      .then(res => {
+        setSearchResults(res.artists);
+      }); 
+  };
+
+  const pageChange = (choice) => {
+    if(choice === 'prev' && offset > 25) {
+      setOffset(offset - 25);
+      fetchArtists();
+    }
+    if(choice === 'next') {
+      setOffset(offset + 25);
+      fetchArtists();
+    }
+  };
+
 
   const search = (searchTerm) => {
     event.preventDefault();
-    getArtists(searchTerm)
+    getArtists(searchTerm, offset)
       .then(res => {
         setSearchResults(res.artists);
-        
       });   
   };
 
-  const updateArtist = (artist) => {
-    setArtist(artist);
-  };
-
-  return { artist, search, setSearch, searchTerm, searchResults, updateArtist };
+  return { search, setSearch, searchTerm, searchResults, pageChange };
 };
 
 export default useSearch;

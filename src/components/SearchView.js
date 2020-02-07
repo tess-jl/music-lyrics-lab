@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import useSearch from '../hooks/useSearch';
 import { Link } from 'react-router-dom';
 
-const SearchView = ({ value, handleChange }) => {
+const SearchView = ({ value }) => {
   
-  const { search, setSearch, searchTerm, searchResults, updateArtist } = useSearch();
+  const { search, setSearch, searchTerm, searchResults, pageChange } = useSearch();
   
   const artists = searchResults.map(({ id, name }) => {
     return (
@@ -29,13 +29,16 @@ const SearchView = ({ value, handleChange }) => {
       <ul>
         {artists}
       </ul>
+
+      <button value="prev" onClick={({ target }) => pageChange(target.value)}>previous</button>
+      <button value="next" onClick={({ target }) => pageChange(target.value)}>next</button>
     </>
   );
     
 };
 
 SearchView.propTypes = {
-    
+  value: PropTypes.string.isRequired
 };
 
 export default SearchView;
