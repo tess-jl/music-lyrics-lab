@@ -1,17 +1,23 @@
 import React from 'react'; 
 import useArtist from '../hooks/useArtist';
 import { Link, useParams } from 'react-router-dom';
+// import placeholder from 'src/assets/placeholder.png';
+
 
 const ArtistView = () => {
   const { name } = useParams();
   const { releases, pageChange } = useArtist();
+
+  const ablumArtStyle = {
+    height: '100px'
+  };
 
   const mappedReleases = releases.map(({ id, title }) => {
     return (
       <>
         <li key={id}>
           <Link to={`/album/${name}/${id}`}>
-            <img src={`http://coverartarchive.org/release/${id}/front`} />
+            <img style={ablumArtStyle} src={ `http://coverartarchive.org/release/${id}/front`} />
             <h3>{title}</h3>
           </Link>
         </li>
