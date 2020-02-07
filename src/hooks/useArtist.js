@@ -5,13 +5,30 @@ import { getArtist } from '../services/getArtist';
 const useArtist = () => {
   const { id } = useParams();
   const [releases, setReleases] = useState([]);
-  
-  useEffect(() => {
-    getArtist(id)
-      .then(res => setReleases(res.releases));
-  }, []);
+  const [offset, setOffset] = useState(0);
 
-  return { releases };
+  
+  const fetchArtist = () => {
+    getArtist(id, offset)
+      .then(res => setReleases(res.releases));
+  };
+  
+  const pageChange = (choice) => {
+    if(choice === 'prev' && offset > 25) {
+      setOffset(offset - 25);
+      fetchArtist();
+    }
+    if(choice === 'next') {
+      setOffset(offset + 25);
+      fetchArtist();
+    }
+  };
+
+  useEffect(() => {
+    fetchArtist();
+  }, [offset]);
+
+  return { releases, pageChange };
 }; 
 
 export default useArtist;

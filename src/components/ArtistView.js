@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const ArtistView = () => {
   const { name } = useParams();
-  const { releases } = useArtist();
+  const { releases, pageChange } = useArtist();
 
   const mappedReleases = releases.map(({ id, title }) => {
     return (
@@ -19,9 +19,14 @@ const ArtistView = () => {
     );
   });
   return (
-    <ul>
-      {mappedReleases}
-    </ul>
+    <>
+      <ul>
+        {mappedReleases}
+      </ul>
+
+      <button value="prev" onClick={({ target }) => pageChange(target.value)}>previous</button>
+      <button value="next" onClick={({ target }) => pageChange(target.value)}>next</button>
+    </>
   );
 };
 
