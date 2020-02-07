@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import  getArtists  from '../services/getArtists';
 import useSearch from '../hooks/useSearch';
 import { Link } from 'react-router-dom';
 
